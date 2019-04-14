@@ -20,16 +20,9 @@ namespace Airplanes
 
         private void btnDodadi_Click(object sender, EventArgs e)
         {
-            Form1 f1 = new Form1();
             
-            foreach (Aerodrom ar in f1.get()) {
-                if (ar.kratenka == tbKratenka.Text) {
-                    MessageBox.Show("Kratenkata veke postoi");
-                    return;
-                }
 
-            }
-            if (tbKratenka.Text == "") {
+            if (tbKratenka.Text == "" || tbGrad.Text=="" || tbIme.Text=="") {
                 MessageBox.Show("Site polinja se zadolzitelni!");
                 return;
             }

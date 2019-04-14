@@ -22,13 +22,6 @@ namespace Airplanes
 
         }
 
-            public List<Object> get() {
-            List<Object> lista = new List<Object>();
-            foreach (Object obj in lbAerodromi.Items) {
-                lista.Add(obj);
-            }
-            return lista;
-            }
 
         private void btnDodadiA_Click(object sender, EventArgs e)
         {
@@ -49,7 +42,8 @@ namespace Airplanes
         {
             if (lbAerodromi.SelectedIndex != -1)
             {
-                DialogResult res = MessageBox.Show("Dali ste sigurni", "Poraka nekoja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult res = MessageBox.Show("Dali ste sigurni", "Poraka nekoja",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (res == DialogResult.Yes) { 
                 lbAerodromi.Items.Remove(lbAerodromi.SelectedItem);
