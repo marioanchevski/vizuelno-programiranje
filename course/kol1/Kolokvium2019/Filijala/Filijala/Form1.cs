@@ -35,7 +35,6 @@ namespace Filijala
                     lbFilijali.Items.RemoveAt(lbFilijali.SelectedIndex);
                 }
             }
-            
         }
 
         public void prikazi() {
