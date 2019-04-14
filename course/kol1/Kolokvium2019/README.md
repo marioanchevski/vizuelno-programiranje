@@ -1,1 +1,1 @@
-baranjata od zadacata dopolnitelno ke gi objavam :)
+tekstot od zadacata dopolnitelno ke go objavam :)
