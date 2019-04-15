@@ -3,4 +3,4 @@
 * _Windows forms_</br>
 
 [Решена задача од прв колоквум 
-2019](../blob/master/course/ko1/Kolokvium2019)
+2019](course/ko1/Kolokvium2019/)
