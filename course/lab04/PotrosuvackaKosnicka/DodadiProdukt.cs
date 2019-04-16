@@ -52,7 +52,7 @@ namespace PotrosuvackaKosnicka
                 errorProvider1.SetError(tbCena, "Цената е задолжителна!");
                 e.Cancel = true;
             }
-            if (!decimal.TryParse(tbCena.Text,out d)) {
+            if (!decimal.TryParse(tbCena.Text,out d) || (decimal.TryParse(tbCena.Text,out d) && d<0)) {
                 errorProvider1.SetError(tbCena, "Внесете валидна вредност!");
                 e.Cancel = true;
          
