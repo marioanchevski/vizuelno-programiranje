@@ -15,8 +15,8 @@ namespace PotrosuvackaKosnicka
         public Form1()
         {
             InitializeComponent();
-            lbProdukti.Items.Add(new Produkt() { Name = "Mandarina", Category = "Hrana", Cena = 35.25m });
-            lbProdukti.Items.Add(new Produkt() { Name = "Tecen sapun", Category = "Higiena", Cena = 75m });
+            lbProdukti.Items.Add(new Produkt() { Name = "Mandarina", Category = "Hrana", Cena = 35.25m ,Zaliha=4});
+            lbProdukti.Items.Add(new Produkt() { Name = "Tecen sapun", Category = "Higiena", Cena = 75m,Zaliha=10});
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -40,6 +40,7 @@ namespace PotrosuvackaKosnicka
                 tbIme.Text = p.Name;
                 tbCena.Text = p.Cena.ToString(".00");
                 tbKategorija.Text = p.Category;
+                tbZaliha.Text = p.Zaliha.ToString(".00");
 
             }
         }
@@ -53,6 +54,7 @@ namespace PotrosuvackaKosnicka
                 tbKategorija.Text = "";
                 tbIme.Text = "";
                 tbCena.Text = "";
+                tbZaliha.Text = "";
             }
         }
 
@@ -72,13 +74,17 @@ namespace PotrosuvackaKosnicka
             tbVkupno.Text = "";
             }
         }
+        public void refresh() {
+            
+            
+        }
 
         public void presmetaj() {
             decimal vk = 0;
             if (lbKosnicka.Items.Count > 0) {
-                foreach(Produkt p  in lbKosnicka.Items)
+                foreach(ProductItem p  in lbKosnicka.Items)
                 {
-                    vk += p.Cena;
+                    vk += p.prod.Cena;
                 }
             }
             tbVkupno.Text = vk.ToString(".00");
@@ -87,10 +93,24 @@ namespace PotrosuvackaKosnicka
         private void btnAddKos_Click(object sender, EventArgs e)
         {
             if (lbProdukti.SelectedIndex != -1) {
-                lbKosnicka.Items.Add(lbProdukti.Items[lbProdukti.SelectedIndex]);
+                Produkt p = (Produkt)lbProdukti.Items[lbProdukti.SelectedIndex];
+                if (p.Zaliha < nudKolicina.Value || nudKolicina.Value==0) {
+                   // MessageBox.Show("Nema dovolno!");
+                    return;
+                }
+
+
+                lbKosnicka.Items.Add(new ProductItem() { prod = p });
+                p.Zaliha -= nudKolicina.Value;
+
+                lbProdukti.Items[lbProdukti.SelectedIndex] = p;
+               // p.Zaliha -= nudKolicina.Value;
                 presmetaj();
             }
         }
+
+
+       
 
         private void btnDelKos_Click(object sender, EventArgs e)
         {

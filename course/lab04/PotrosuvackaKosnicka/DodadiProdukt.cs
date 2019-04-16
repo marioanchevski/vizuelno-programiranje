@@ -71,13 +71,27 @@ namespace PotrosuvackaKosnicka
                 return;
             }
 
-            produkt = new Produkt() { Cena=Convert.ToDecimal(tbCena.Text), Name=tbIme.Text,Category=tbKategorija.Text};
+            produkt = new Produkt() { Cena=Convert.ToDecimal(tbCena.Text), Name=tbIme.Text,Category=tbKategorija.Text,Zaliha=nudZaliha.Value};
             DialogResult = DialogResult.OK;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void nudZaliha_Validating(object sender, CancelEventArgs e)
+        {
+            if (nudZaliha.Value == 0)
+            {
+                errorProvider1.SetError(nudZaliha, "poveke od 1 ");
+                e.Cancel = true;
+
+            }
+            else {
+                errorProvider1.SetError(nudZaliha, null);
+                e.Cancel = false;
+            }
         }
     }
 }

@@ -47,7 +47,11 @@
             this.tbKategorija = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbIme = new System.Windows.Forms.TextBox();
+            this.nudKolicina = new System.Windows.Forms.NumericUpDown();
+            this.tbZaliha = new System.Windows.Forms.TextBox();
+            this.Залиха = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKolicina)).BeginInit();
             this.SuspendLayout();
             // 
             // lbProdukti
@@ -165,6 +169,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Залиха);
+            this.groupBox1.Controls.Add(this.tbZaliha);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.tbCena);
             this.groupBox1.Controls.Add(this.label5);
@@ -230,11 +236,36 @@
             this.tbIme.Size = new System.Drawing.Size(250, 20);
             this.tbIme.TabIndex = 13;
             // 
+            // nudKolicina
+            // 
+            this.nudKolicina.Location = new System.Drawing.Point(425, 225);
+            this.nudKolicina.Name = "nudKolicina";
+            this.nudKolicina.Size = new System.Drawing.Size(75, 20);
+            this.nudKolicina.TabIndex = 13;
+            // 
+            // tbZaliha
+            // 
+            this.tbZaliha.Enabled = false;
+            this.tbZaliha.Location = new System.Drawing.Point(155, 123);
+            this.tbZaliha.Name = "tbZaliha";
+            this.tbZaliha.Size = new System.Drawing.Size(106, 20);
+            this.tbZaliha.TabIndex = 19;
+            // 
+            // Залиха
+            // 
+            this.Залиха.AutoSize = true;
+            this.Залиха.Location = new System.Drawing.Point(152, 103);
+            this.Залиха.Name = "Залиха";
+            this.Залиха.Size = new System.Drawing.Size(43, 13);
+            this.Залиха.TabIndex = 20;
+            this.Залиха.Text = "Залиха";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 357);
+            this.Controls.Add(this.nudKolicina);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDelProd);
             this.Controls.Add(this.btnAddProd);
@@ -252,6 +283,7 @@
             this.Text = "Потрошувачка кошничка";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKolicina)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,6 +310,9 @@
         private System.Windows.Forms.TextBox tbCena;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbKategorija;
+        private System.Windows.Forms.NumericUpDown nudKolicina;
+        private System.Windows.Forms.Label Залиха;
+        private System.Windows.Forms.TextBox tbZaliha;
     }
 }
 
