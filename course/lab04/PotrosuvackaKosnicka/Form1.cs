@@ -15,13 +15,8 @@ namespace PotrosuvackaKosnicka
         public Form1()
         {
             InitializeComponent();
-            lbProdukti.Items.Add(new Produkt() { Name = "Mandarina", Category = "Hrana", Cena = 35.25m ,Zaliha=4});
-            lbProdukti.Items.Add(new Produkt() { Name = "Tecen sapun", Category = "Higiena", Cena = 75m,Zaliha=10});
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            lbProdukti.Items.Add(new Produkt() { Name = "Мандарина", Category = "Храна", Cena = 35.25m ,Zaliha=4});
+            lbProdukti.Items.Add(new Produkt() { Name = "Течен сапун", Category = "Хигиена", Cena = 75m,Zaliha=10});
         }
 
         private void btnAddProd_Click(object sender, EventArgs e)
@@ -40,14 +35,14 @@ namespace PotrosuvackaKosnicka
                 tbIme.Text = p.Name;
                 tbCena.Text = p.Cena.ToString(".00");
                 tbKategorija.Text = p.Category;
-                tbZaliha.Text = p.Zaliha.ToString(".00");
+                tbZaliha.Text = p.Zaliha.ToString();
 
             }
         }
 
         private void btnIsprazniP_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Dali ste sigurni?", "Izbrisi?", MessageBoxButtons.YesNo,
+            if (MessageBox.Show("Дали сте сигури?", "Избриши?", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 lbProdukti.Items.Clear();
@@ -68,23 +63,19 @@ namespace PotrosuvackaKosnicka
 
         private void btnIzbrisiKos_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Dali ste sigurni?", "Izbrisi?", MessageBoxButtons.YesNo,
+            if (MessageBox.Show("Дали сте сигури?", "Избриши?", MessageBoxButtons.YesNo,
                MessageBoxIcon.Question) == DialogResult.Yes)
             {  lbKosnicka.Items.Clear();
             tbVkupno.Text = "";
             }
         }
-        public void refresh() {
-            
-            
-        }
-
+  
         public void presmetaj() {
             decimal vk = 0;
             if (lbKosnicka.Items.Count > 0) {
                 foreach(ProductItem p  in lbKosnicka.Items)
                 {
-                    vk += p.prod.Cena;
+                    vk += p.prod.Cena*p.kolicina;
                 }
             }
             tbVkupno.Text = vk.ToString(".00");
@@ -94,22 +85,23 @@ namespace PotrosuvackaKosnicka
         {
             if (lbProdukti.SelectedIndex != -1) {
                 Produkt p = (Produkt)lbProdukti.Items[lbProdukti.SelectedIndex];
-                if (p.Zaliha < nudKolicina.Value || nudKolicina.Value==0) {
-                   // MessageBox.Show("Nema dovolno!");
+                if (p.Zaliha < nudKolicina.Value ) {
+                    MessageBox.Show("Нема доволно!", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
+                if (nudKolicina.Value == 0) {
+                    MessageBox.Show("Внесете количина!","Грешка",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
 
-                lbKosnicka.Items.Add(new ProductItem() { prod = p });
-                p.Zaliha -= nudKolicina.Value;
-
+                lbKosnicka.Items.Add(new ProductItem() { prod = p,kolicina=Convert.ToInt32(nudKolicina.Value) });
+                p.Zaliha -= Convert.ToInt32(nudKolicina.Value);
                 lbProdukti.Items[lbProdukti.SelectedIndex] = p;
-               // p.Zaliha -= nudKolicina.Value;
+                nudKolicina.Value = 0;
                 presmetaj();
             }
         }
-
-
        
 
         private void btnDelKos_Click(object sender, EventArgs e)

@@ -11,11 +11,11 @@ namespace PotrosuvackaKosnicka
         public string Name { get; set; }
         public string Category { set; get; }
         public decimal Cena { get; set; }
-        public decimal Zaliha { get; set; }
+        public int Zaliha { get; set; }
 
         public override string ToString()
         {
-            return String.Format("{0} - dostapnost:{1}",Name,Zaliha);
+            return String.Format("{0} - На залиха:{1}",Name,Zaliha);
         }
     }
 }

@@ -9,10 +9,11 @@ namespace PotrosuvackaKosnicka
     public class ProductItem
     {
         public Produkt prod { get; set; }
+        public int kolicina { set; get; }
 
         public override string ToString()
         {
-            return String.Format("{0} - {1}x{2} = {3}" ,prod.Name,prod.Zaliha,prod.Cena,prod.Cena*prod.Zaliha);
+            return String.Format("{0} - {1}x{2} = {3}" ,prod.Name,kolicina,prod.Cena,prod.Cena*kolicina);
         }
     }
 }

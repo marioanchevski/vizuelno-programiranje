@@ -22,7 +22,7 @@ namespace PotrosuvackaKosnicka
         {
             if (tbIme.Text == "")
             {
-                errorProvider1.SetError(tbIme, "Imeto ne smee da e prazo!");
+                errorProvider1.SetError(tbIme, "Името е задолжително!");
                 e.Cancel = true;
             }
             else {
@@ -35,7 +35,7 @@ namespace PotrosuvackaKosnicka
         {
             if (tbKategorija.Text == "")
             {
-                errorProvider1.SetError(tbKategorija, "Kategorijata ne smee da e praza!");
+                errorProvider1.SetError(tbKategorija, "Категоријата е задолжителна!");
                 e.Cancel = true;
             }
             else {
@@ -49,11 +49,11 @@ namespace PotrosuvackaKosnicka
             decimal d;
             if (tbCena.Text == "")
             {
-                errorProvider1.SetError(tbCena, "Cenata ne smee da e prazna!");
+                errorProvider1.SetError(tbCena, "Цената е задолжителна!");
                 e.Cancel = true;
             }
             if (!decimal.TryParse(tbCena.Text,out d)) {
-                errorProvider1.SetError(tbCena, "Vnesete validna vrednost!");
+                errorProvider1.SetError(tbCena, "Внесете валидна вредност!");
                 e.Cancel = true;
          
             }
@@ -67,11 +67,11 @@ namespace PotrosuvackaKosnicka
         private void button1_Click(object sender, EventArgs e)
         {
             if (tbCena.Text == "" || tbIme.Text == "" || tbKategorija.Text == "") {
-                MessageBox.Show("Site polinja se zadolzitelni!");
+                MessageBox.Show("Сите полиња се задолжителни!");
                 return;
             }
 
-            produkt = new Produkt() { Cena=Convert.ToDecimal(tbCena.Text), Name=tbIme.Text,Category=tbKategorija.Text,Zaliha=nudZaliha.Value};
+            produkt = new Produkt() { Cena=Convert.ToDecimal(tbCena.Text), Name=tbIme.Text,Category=tbKategorija.Text,Zaliha=Convert.ToInt32(nudZaliha.Value)};
             DialogResult = DialogResult.OK;
         }
 
@@ -84,7 +84,7 @@ namespace PotrosuvackaKosnicka
         {
             if (nudZaliha.Value == 0)
             {
-                errorProvider1.SetError(nudZaliha, "poveke od 1 ");
+                errorProvider1.SetError(nudZaliha, "Залихата мора да е минимум 1");
                 e.Cancel = true;
 
             }

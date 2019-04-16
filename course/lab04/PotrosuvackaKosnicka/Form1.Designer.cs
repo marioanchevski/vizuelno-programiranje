@@ -41,6 +41,8 @@
             this.btnAddProd = new System.Windows.Forms.Button();
             this.btnDelProd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Залиха = new System.Windows.Forms.Label();
+            this.tbZaliha = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbCena = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbIme = new System.Windows.Forms.TextBox();
             this.nudKolicina = new System.Windows.Forms.NumericUpDown();
-            this.tbZaliha = new System.Windows.Forms.TextBox();
-            this.Залиха = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudKolicina)).BeginInit();
             this.SuspendLayout();
@@ -183,7 +183,23 @@
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Детали за продуктот";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Залиха
+            // 
+            this.Залиха.AutoSize = true;
+            this.Залиха.Location = new System.Drawing.Point(152, 103);
+            this.Залиха.Name = "Залиха";
+            this.Залиха.Size = new System.Drawing.Size(43, 13);
+            this.Залиха.TabIndex = 20;
+            this.Залиха.Text = "Залиха";
+            // 
+            // tbZaliha
+            // 
+            this.tbZaliha.Enabled = false;
+            this.tbZaliha.Location = new System.Drawing.Point(155, 123);
+            this.tbZaliha.Name = "tbZaliha";
+            this.tbZaliha.Size = new System.Drawing.Size(106, 20);
+            this.tbZaliha.TabIndex = 19;
             // 
             // label6
             // 
@@ -242,23 +258,6 @@
             this.nudKolicina.Name = "nudKolicina";
             this.nudKolicina.Size = new System.Drawing.Size(75, 20);
             this.nudKolicina.TabIndex = 13;
-            // 
-            // tbZaliha
-            // 
-            this.tbZaliha.Enabled = false;
-            this.tbZaliha.Location = new System.Drawing.Point(155, 123);
-            this.tbZaliha.Name = "tbZaliha";
-            this.tbZaliha.Size = new System.Drawing.Size(106, 20);
-            this.tbZaliha.TabIndex = 19;
-            // 
-            // Залиха
-            // 
-            this.Залиха.AutoSize = true;
-            this.Залиха.Location = new System.Drawing.Point(152, 103);
-            this.Залиха.Name = "Залиха";
-            this.Залиха.Size = new System.Drawing.Size(43, 13);
-            this.Залиха.TabIndex = 20;
-            this.Залиха.Text = "Залиха";
             // 
             // Form1
             // 
