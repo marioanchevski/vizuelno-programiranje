@@ -66,6 +66,7 @@ namespace Pacmann
             }
         }
 
+
         public void Draw(Graphics g)
         {
             Brush b = new SolidBrush(Color.Yellow);
