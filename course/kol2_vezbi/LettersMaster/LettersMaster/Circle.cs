@@ -31,7 +31,7 @@ namespace LettersMaster
             Brush b2 = new SolidBrush(Color.Black);
             if (win)
             {
-                g.FillEllipse(b3, Center.X - Radius, Center.Y - Radius, 2 * Radius, 2 * Radius);
+                g.FillEllipse(Brushes.Red, Center.X - Radius, Center.Y - Radius, 2 * Radius, 2 * Radius);
             }
             else { 
             g.FillEllipse(b, Center.X-Radius, Center.Y-Radius, 2 * Radius, 2 * Radius);

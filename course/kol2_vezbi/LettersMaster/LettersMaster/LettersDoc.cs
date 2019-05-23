@@ -12,14 +12,17 @@ namespace LettersMaster
         public List<Circle> items { get; set; }
         public int misses { get; set; }
         public int points { get; set; }
+        public int[] Count { get; set; }
 
         public LettersDoc() {
             items = new List<Circle>();
             misses = 0;
             points = 0;
+            Count = new int[26];
         }
 
         public void addCircle(Circle c) {
+            Count[c.Letter - 65]++;
             items.Add(c);
         }
 
@@ -32,6 +35,11 @@ namespace LettersMaster
         {
             foreach (var c in items)
                 c.Move();
+
+            for (int i = 0; i < items.Count; i++) {
+                if (items[i].win)
+                    items.RemoveAt(i);
+            }
         }
 
         public void check(int height)
@@ -48,10 +56,11 @@ namespace LettersMaster
         public void win(char c) {
             for (int i = 0; i < items.Count; i++)
             {
-                if (items[i].Letter == c)
+                if (items[i].Letter == Char.ToUpper(c))
                 {
                     items[i].win = true;
                     points++;
+                    break;
                 }
             }
         }

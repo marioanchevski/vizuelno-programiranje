@@ -38,7 +38,6 @@ namespace LettersMaster
             if (createCircle % 10 == 0) {
 
                 game.addCircle(new Circle(new Point(x, 30)));
-           
             }
             game.Move();
             game.check(this.Height);
@@ -50,6 +49,11 @@ namespace LettersMaster
         {
             toolStripStatusLabel1.Text = string.Format("Misses:{0}",game.misses);
             toolStripStatusLabel2.Text = string.Format("Points:{0}", game.points);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 26; i++) {
+                sb.Append(string.Format("{0}:{1}  ", (char)('A' + i), game.Count[i]));
+            }
+            toolStripStatusLabel3.Text = sb.ToString();
             
         }
 
