@@ -37,7 +37,7 @@ namespace ColorCircles
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clear(Color.White);
-            if (!firstClick) {
+            if (!Start.IsEmpty) {
                 Pen p = new Pen(Color.Black, 3);
                 p.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
                 e.Graphics.DrawEllipse(p, Start.X-Radius, Start.Y-Radius, 2 * Radius, 2 * Radius);
@@ -48,15 +48,16 @@ namespace ColorCircles
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) { 
-                if (firstClick) {
+                if (Start.IsEmpty) {
                     Start = e.Location;
-                    firstClick = false;
+                    
                 }
                 else
                 {
                     Ball b = new Ball(Start,currentColor, Radius);
                     topcinja.addBall(b);
-                    firstClick = true;
+                    Start = Point.Empty;
+                    currentPoint = Point.Empty;
                     Invalidate(true);
                 }
             }
@@ -68,17 +69,17 @@ namespace ColorCircles
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!firstClick) { 
+             
                 currentPoint = e.Location;
-                Radius = (Start.X - currentPoint.X) * (Start.X - currentPoint.X) + (Start.Y-currentPoint.Y)* (Start.Y - currentPoint.Y);
-                Invalidate(true);
-            }
+                Radius = (int)Math.Sqrt(( currentPoint.X-Start.X) * (currentPoint.X - Start.X) + (currentPoint.Y-Start.Y)* (currentPoint.Y - Start.Y));
+                Invalidate();
+            
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-                firstClick = true;
+                Start = Point.Empty;
             if (e.KeyCode == Keys.Left) {
                 topcinja.Move(20,20, Ball.Direction.Left);
             }
